@@ -3,13 +3,12 @@ import socketio
 import threading
 import time
 
-# Вставь сюда свой Replit URL, пример:
+# URL Replit с правильным портом (Replit автоматически проксирует)
 SERVER_URL = "https://a8e743fd-041b-4437-a474-ef1a840df3a7-00-3tts2srispit0.worf.replit.dev"
-
 
 sio = socketio.Client()
 nickname = ""
-connected = False  # флаг подключения
+connected = False
 
 # ===== SocketIO события =====
 @sio.event
@@ -56,7 +55,7 @@ root = ctk.CTk()
 root.geometry("400x600")
 root.title("💬 Messenger")
 
-# Поле чата (заблокировано для редактирования вручную)
+# Поле чата (заблокировано)
 text_box = ctk.CTkTextbox(root, width=380, height=450, state="disabled")
 text_box.pack(padx=10, pady=10)
 
@@ -70,12 +69,12 @@ send_btn = ctk.CTkButton(entry_frame, text="Send", width=70, command=send_messag
 send_btn.pack(side="right", padx=5, pady=5)
 
 def add_message(author, msg):
-    text_box.configure(state="normal")  # временно разблокируем
+    text_box.configure(state="normal")
     if author:
         text_box.insert("end", f"{author}: {msg}\n")
     else:
         text_box.insert("end", f"{msg}\n")
-    text_box.configure(state="disabled")  # снова блокируем
+    text_box.configure(state="disabled")
     text_box.see("end")
 
 entry.bind("<Return>", lambda e: send_message())
