@@ -4,7 +4,8 @@ import threading
 import time
 
 # Вставь сюда свой Replit URL, пример:
-SERVER_URL = "https://<твой-проект>.username.repl.co"
+SERVER_URL = "https://a8e743fd-041b-4437-a474-ef1a840df3a7-00-3tts2srispit0.worf.replit.dev"
+
 
 sio = socketio.Client()
 nickname = ""
